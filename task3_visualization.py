@@ -2,13 +2,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Load Task 3 cleaned data
 df = pd.read_csv("trends_clean.csv")
 
-# Create Outputs folder
 os.makedirs("Outputs", exist_ok=True)
 
-# Chart 1: Top 10 stories by score
+
 top10 = df.nlargest(10, "score")
 
 plt.figure(figsize=(10, 6))
@@ -22,7 +20,7 @@ plt.savefig("Outputs/chart1_Top Stories.png")
 plt.show()
 plt.close()
 
-# Chart 2: Stories per category
+
 category_count = df["category"].value_counts()
 
 plt.figure(figsize=(10, 6))
@@ -36,11 +34,9 @@ plt.savefig("Outputs/chart2_Category.png")
 plt.show()
 plt.close()
 
-# Create popular column using median score
-median_score = df["score"].median()
-df["is_popular"] = df["score"] >= median_score
 
-# Chart 3: Score versus comments
+median_score = df["score"].median()
+df["is_popular"] = df["score"] >= median_sco
 plt.figure(figsize=(10, 6))
 
 popular = df[df["is_popular"]]
@@ -58,7 +54,7 @@ plt.savefig("Outputs/chart3_Scatter.png")
 plt.show()
 plt.close()
 
-# Dashboard
+
 fig, axes = plt.subplots(2, 2, figsize=(16, 10))
 
 axes[0, 0].barh(top10["title"], top10["score"])
